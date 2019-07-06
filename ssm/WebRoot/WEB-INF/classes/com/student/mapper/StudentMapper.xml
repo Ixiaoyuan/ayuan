@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.student.mapper.StudentMapper"><!-- 配置命名空间，是接口和配置文件在同一个路径下面 -->
+
+     <select id="listsel" resultType="Student">
+          select *from student
+     </select>  
+     
+     <insert id="addStu" parameterType="Student">
+          insert into student(id,name,age,sex,addr,classcode)
+          values(#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{age,jdbcType=INTEGER},#{sex,jdbcType=VARCHAR},#{addr,jdbcType=VARCHAR},#{classcode,jdbcType=VARCHAR})
+     </insert>
+     
+     <select id="Stusel" resultType="Student">
+          select *from student s where id=#{id,jdbcType=INTEGER}
+     </select>
+     
+     <update id="updateStu" parameterType="Student">
+          update Student
+          set id=#{id,jdbcType=INTEGER},
+          name =#{name,jdbcType=VARCHAR},
+          age =#{age,jdbcType=INTEGER},
+          sex =#{sex,jdbcType=VARCHAR},
+          addr=#{addr,jdbcType=VARCHAR},
+          classcode=#{classcode,jdbcType=VARCHAR}
+          where id=#{id,jdbcType=INTEGER}
+     </update>   
+     
+     <delete id="deleteStu" parameterType="Student">
+         delete from student where id=#{id,jdbcType=INTEGER}
+     </delete>
+</mapper>
